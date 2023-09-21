@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['lan'])){
+    $_SESSION['lan'] = 'CN';
+}
+
+
+
+?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -21,8 +32,6 @@
 
     <!--modernizr min js here-->
     <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
-
-
 </head>
 
 <body>
@@ -45,10 +54,10 @@
                     </div>
                     <div class="top_right text-right">
                         <ul>
-                            <li class="language"><a href="#"> Language <i class="ion-chevron-down"></i></a>
+                            <li class="language"><a href="#"> Language <?php echo $_COOKIE['lan'];?><i class="ion-chevron-down"></i></a>
                                 <ul class="dropdown_language">
-                                    <li><a href="#">English</a></li>
-                                    <li><a href="#">Chinese</a></li>
+                                    <li><a href="include/lan.php?lan=EN">English</a></li>
+                                    <li><a href="include/lan.php?lan=CN">Chinese</a></li>
                                 </ul>
                             </li>
                             <li class="top_links"><a href="#">Hong Kong <i class="ion-chevron-down"></i></a>
@@ -66,20 +75,19 @@
                                 <a href="#">JEWELLERY</a>
                             </li>
                             <li class="menu-item-has-children">
-                                <a href="#">珠寶首飾</a>
+                                <a href="#"><?php if($_SESSION['lan'] == 'CN') echo '珠寶首飾'; else echo 'Jewelry'?></a>
                                 <ul class="sub-menu">
-                                    <li><a href="#">所有款式</a></li>
-                                    <li><a href="#">寶石顏色</a></li>
-                                    <li><a href="#">寶石品種</a></li>
-                                    <li><a href="#">鑽石</a></li>
-                                    <li><a href="#">彩色寶石</a></li>
-                                    <li><a href="#">減價商品</a></li>
+                                    <li><a href="#"><?php if($_SESSION['lan'] == 'CN') echo '所有款式'; else echo 'Designs'?></a></li>
+                                    <li><a href="#"><?php if($_SESSION['lan'] == 'CN') echo '寶石顏色'; else echo 'Gemstones'?></a></li>
+                                    <li><a href="#"><?php if($_SESSION['lan'] == 'CN') echo '寶石品種'; else echo 'Varieties'?></a></li>
+                                    <li><a href="#"><?php if($_SESSION['lan'] == 'CN') echo '鑽石'; else echo 'Diamond'?></a></li>
+                                    <li><a href="#"><?php if($_SESSION['lan'] == 'CN') echo '彩色寶石'; else echo 'colored gemstones'?></a></li>
+                                    <li><a href="#"><?php if($_SESSION['lan'] == 'CN') echo '減價商品'; else echo 'discounted items'?></a></li>
                                 </ul>
 
                             </li>
                             <li class="menu-item-has-children">
-                                <a href="#">網上購買 </a>
-                            </li>
+                                <a href="#"><?php if($_SESSION['lan'] == 'CN') echo '網上購買'; else echo 'online shopping'?></a></li>
                            <!-- <li class="menu-item-has-children">
                                 <a href="#">BLOG</a>
                                 <ul class="sub-menu">
@@ -91,8 +99,7 @@
 
                             </li>-->
                             <li class="menu-item-has-children">
-                                <a href="#">聯繫本店</a>
-                            </li>
+                                <a href="#"><?php if($_SESSION['lan'] == 'CN') echo '聯繫本店'; else echo 'contact the store'?></a></li></a>
                         </ul>
                     </div>
                  <!--   <div class="Offcanvas_footer">
@@ -139,8 +146,8 @@
                         <ul>
                             <li class="language"><a href="#">Language <i class="ion-chevron-down"></i></a>
                                 <ul class="dropdown_language">
-                                    <li><a href="#">English</a></li>
-                                    <li><a href="#">Chinese</a></li>
+                                    <li><a href="include/lan.php?lan=EN">English</a></li>
+                                    <li><a href="include/lan.php?lan=CN">Chinese</a></li>
                                 </ul>
                             </li>
                             <li class="currency"><a href="#">Hong Kong <i class="ion-chevron-down"></i></a>
@@ -185,7 +192,7 @@
                 </div>-->
                 <div class="col-lg-12 col-md-12 col-12 text-center">
                     <div class="logo">
-                        <a href="index.html"><img src="assets/img/logo/logo.png" style="width: 250px;" alt=""></a>
+                        <a href="index.php"><img src="assets/img/logo/logo.png" style="width: 250px;" alt=""></a>
                     </div>
                 </div>
                 <!-- <div class="col-lg-5 col-md-7 col-6">
@@ -278,17 +285,17 @@
                             <nav>
                                 <ul>
                                     <li><a href="#">JEWELLERY</a></li>
-                                    <li><a href="#">珠寶首飾 <i class="fa fa-angle-down"></i></a>
+                                    <li><a href="#"><?php if($_SESSION['lan'] == 'CN') echo '珠寶首飾'; else echo 'Jewelry'?><i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">
-                                            <li><a href="#">所有款式</a></li>
-                                            <li><a href="#">寶石顏色</a></li>
-                                            <li><a href="#">寶石品種</a></li>
-                                            <li><a href="#">鑽石</a></li>
-                                            <li><a href="#">彩色寶石</a></li>
-                                            <li><a href="#">減價商品</a></li>
+                                            <li><a href="#"><?php if($_SESSION['lan'] == 'CN') echo '所有款式'; else echo 'designs'?></a></li>
+                                            <li><a href="#"><?php if($_SESSION['lan'] == 'CN') echo '寶石顏色'; else echo 'colors of gemstones'?></a></li>
+                                            <li><a href="#"><?php if($_SESSION['lan'] == 'CN') echo '寶石品種'; else echo 'varieties of gemstones'?></a></li>
+                                            <li><a href="#"><?php if($_SESSION['lan'] == 'CN') echo '鑽石'; else echo 'diamond'?></a></li>
+                                            <li><a href="#"><?php if($_SESSION['lan'] == 'CN') echo '彩色寶石'; else echo 'colored gemstones'?></a></li>
+                                            <li><a href="#"><?php if($_SESSION['lan'] == 'CN') echo '減價商品'; else echo 'discounted items'?></a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">網上購買</a></li>
+                                    <li><a href="#"><?php if($_SESSION['lan'] == 'CN') echo '網上購買'; else echo 'online shopping'?></a></li>
                                    <!-- <li><a href="#">BLOG <i class="fa fa-angle-down"></i></a>
                                         <ul class="sub_menu pages">
                                             <li><a href="#">所有Blog</a></li>
@@ -297,7 +304,7 @@
                                             <li><a href="#">藍寶石特集</a></li>
                                         </ul>
                                     </li>-->
-                                    <li><a href="#">聯繫本店</a></li>
+                                    <li><a href="#"><?php if($_SESSION['lan'] == 'CN') echo '聯繫本店'; else echo 'contact the store'?></a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -392,10 +399,10 @@
     <div class="container">
         <div class="blog_grid">
             <div class="blog_thumb">
-                <a href="#"><img src="assets/img/blog/AdobeStoc.webp" alt=""></a>
+                <a href="#"><img src="assets/img/blog/new-j.png" alt=""></a>
             </div>
             <div class="blog_content">
-                <h3 class="post_title"><a href="#">紅寶石 • 熱情艶麗 • 愛意洋溢</a></h3>
+                <h3 class="post_title"><a href="#"><a href="#"><?php if($_SESSION['lan'] == 'CN') echo '紅寶石 • 熱情艶麗 • 愛意洋溢'; else echo 'Ruby • Passionate and Gorgeous • Overflowing with Love'?></a></h3>
 
             </div>
 
@@ -405,8 +412,8 @@
                 <a href="#"><img src="assets/img/32.webp" alt=""></a>
             </div>
             <div class="blog_content">
-                <h3 class="post_title"><a href="#">藍寶石 • 高貴氣質的典範</a></h3>
-                <p class="post_desc">戴安娜王妃的皇室童話故事，至今仍為人津津樂道，到底這迷人的藍色寶石擁有什麼過人的魅力呢？</p>
+                <h3 class="post_title"><a href="#"><?php if($_SESSION['lan'] == 'CN') echo '藍寶石 • 高貴氣質的典範'; else echo 'Sapphire • Exemplifies Nobility and Elegance'?></a></h3>
+                <p class="post_desc"><a href="#"><?php if($_SESSION['lan'] == 'CN') echo '戴安娜王妃的皇室童話故事，至今仍為人津津樂道，到底這迷人的藍色寶石擁有什麼過人的魅力呢？'; else echo 'The royal fairy tale story of Princess Diana continues to captivate people to this day. What extraordinary charm does this enchanting blue gemstone possess?'?></a></p>
 
             </div>
         </div>
@@ -416,15 +423,26 @@
                 <a href="#"><img src="assets/img/blog/jj2.png" alt=""></a>
             </div>
             <div class="blog_content">
-                <h3 class="post_title"><a href="#">翡翠</a></h3>
-                <p class="post_desc">翡翠(jadeite)，也稱翡翠玉、翠玉、緬甸
-                    玉，是玉的一種。翡翠是在地質作用下形成的
-                    達到玉級的石質多晶集合體，主要由硬玉或硬
-                    玉及鈉質(鈉鉻輝石)和鈉鈣質輝石(綠輝
-                    石)組成，可含有角閃石、長石、鉻鐵礦、褐
-                    鐵礦等。</p>
-                <p class="post_desc">翡翠的顏色非常豐富，除了常見綠色和紅色之
-                    外，還有橙、黃、青、藍、紫色。</p>
+                <h3 class="post_title"><a href="#"><?php if($_SESSION['lan'] == 'CN') echo '翡翠'; else echo 'jade'?></a></h3>
+                <?php if($_SESSION['lan'] == 'CN'){
+                    ?>
+                    <p class="post_desc"> 翡翠(jadeite)，也稱翡翠玉、翠玉、緬甸
+                        玉，是玉的一種。翡翠是在地質作用下形成的
+                        達到玉級的石質多晶集合體，主要由硬玉或硬
+                        玉及鈉質(鈉鉻輝石)和鈉鈣質輝石(綠輝
+                        石)組成，可含有角閃石、長石、鉻鐵礦、褐
+                        鐵礦等。</p>
+                    <p class="post_desc">翡翠的顏色非常豐富，除了常見綠色和紅色之
+                        外，還有橙、黃、青、藍、紫色。</p>
+                        <?php
+                    } else{
+                    ?>
+                    <p class="post_desc"> Jadeite, also known as jadeite jade, green jade, and Burmese jade, is a type of jade. Jadeite is a stone that reaches the quality of jade, formed through geological processes. It is primarily composed of hard jade or hard jadeite, along with sodium-rich (sodium chromium pyroxene) and sodium-calcium pyroxene (green pyroxene). It may also contain minerals like augite, feldspar, chromite, and brown iron ore.
+
+                        </p>
+                    <p class="post_desc">Jadeite exhibits a wide range of colors, beyond the commonly seen green and red, including orange, yellow, cyan, blue, and purple.</p>
+                    <?php
+                }?>
 
             </div>
         </div>
@@ -433,8 +451,8 @@
                 <a href="#"><img src="assets/img/jj66.png" alt=""></a>
             </div>
             <div class="blog_content">
-                <h3 class="post_title"><a href="#">粉紅鑽</a></h3>
-                <p class="post_desc">彩色鑽石可稱之為鑽石中的帝王，當中以粉色及藍色最為珍稀。價值連城的彩鑽應該如何揀選呢？</p>
+                <h3 class="post_title"><a href="#"><?php if($_SESSION['lan'] == 'CN') echo '粉紅鑽'; else echo 'pink diamond'?></a></h3>
+                <p class="post_desc"><?php if($_SESSION['lan'] == 'CN') echo '彩色鑽石可稱之為鑽石中的帝王，當中以粉色及藍色最為珍稀。價值連城的彩鑽應該如何揀選呢？'; else echo 'Colored diamonds can be referred to as the royalty of diamonds, with pink and blue being the most rare among them. How should one select priceless colored diamonds?'?></p>
 
             </div>
         </div>
@@ -443,8 +461,8 @@
                 <a href="#"><img src="assets/img/blog/jj1.png" alt=""></a>
             </div>
             <div class="blog_content">
-                <h3 class="post_title"><a href="#">南洋珍珠</a></h3>
-                <p class="post_desc">南洋珍珠圓潤、純凈、碩大、有着與生俱來的自然美，不必像其它珍珠那樣依賴於漂白、染色的人為加工。</p>
+                <h3 class="post_title"><a href="#"><?php if($_SESSION['lan'] == 'CN') echo '南洋珍珠'; else echo 'South Sea pearls'?></a></h3>
+                <p class="post_desc"><?php if($_SESSION['lan'] == 'CN') echo '南洋珍珠圓潤、純凈、碩大、有着與生俱來的自然美，不必像其它珍珠那樣依賴於漂白、染色的人為加工。'; else echo 'South Sea pearls are round, pure, and large, possessing inherent natural beauty that does not require artificial processing such as bleaching or dyeing  unlike some other pearls.'?></p>
             </div>
         </div>
     </div>
